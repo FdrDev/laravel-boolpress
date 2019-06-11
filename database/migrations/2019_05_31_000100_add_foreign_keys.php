@@ -11,28 +11,16 @@ class AddForeignKeys extends Migration
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
-      //foreign posts->authors
-      Schema::table('posts', function (Blueprint $table) {
-      $table->foreign('author_id', 'author')
-            ->references('id')->on('authors')
-            ->onDelete('cascade');
-      });
-      // foreign category->post
-      Schema::table('category_post', function (Blueprint $table) {
-        $table->foreign('category_id','category')
-              ->references('id')->on('categories')
-              ->onDelete('cascade');
-
-        $table->foreign('post_id' , 'post')
-              ->references('id')->on('posts')
-              ->onDelete('cascade');
-
-      });
-
+        Schema::table('category_post', function(Blueprint $table) {
+          $table->foreign('category_id', 'category')->references('id')->on('categories');
+          $table->foreign('post_id', 'post')->references('id')->on('posts');
+        });
+        Schema::table('posts', function(Blueprint $table) {
+          $table->foreign('author_id', 'author')->references('id')->on('authors');
+        });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -40,14 +28,12 @@ class AddForeignKeys extends Migration
      */
     public function down()
     {
-        Schema::create('posts', function (Blueprint $table) {
-          $table->dropForeign('author');
-        });
-
-        Schema::create('posts', function (Blueprint $table) {
-          $table->dropForeign('posts');
-          $table->dropForeign('categories');
-
-        });
+      Schema::table('category_post', function(Blueprint $table) {
+        $table->dropForeign('category');
+        $table->dropForeign('post');
+      });
+      Schema::table('posts', function(Blueprint $table) {
+        $table->dropForeign('author');
+      });
     }
 }

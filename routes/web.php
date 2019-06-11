@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/' , 'HomeController@getLatest5Posts')->name('home.post');
-Route::get('/search' , 'HomeController@search')->name('search');
+Route::get('/', 'MainController@getLatest5Posts')->name('home.post');
+
+// Route::get('/home' , 'HomeController@getLatest5Posts')->name('home.post');
+Route::get('/search' , 'MainController@search')->name('search');
 Route::get('/category/{name}' , 'CategoryController@getCategotyByName')->name('posts.category');
 Route::get('/post/{id}' , 'PostController@getPostById')->name('post.id');
-Route::get('/admin/post/new' , 'AdminController@createNewPost')->name('new.post');
-Route::post('/admin/post/new' , 'AdminController@saveNewPost')->name('save.post');
-Route::get('/admin/post/edit{id}' , 'AdminController@editPost')->name('edit.post');
-Route::patch('/admin/post/edit{id}' , 'AdminController@updatePost')->name('update.post');
+Route::get('/admin/post/new' , 'HomeController@createNewPost')->name('new.post');
+Route::post('/admin/post/new' , 'HomeController@saveNewPost')->name('save.post');
+Route::get('/admin/post/edit{id}' , 'HomeController@editPost')->name('edit.post');
+Route::patch('/admin/post/edit{id}' , 'HomeController@updatePost')->name('update.post');
+
+Auth::routes();
+
+// Route::get('/', 'HomeController@index')->name('home');

@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +12,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
           CategorySeeder::class,
           AuthorSeeder::class,
-          PostSeeder::class,
-          ]);
+          PostSeeder::class
+        ]);
     }
 }

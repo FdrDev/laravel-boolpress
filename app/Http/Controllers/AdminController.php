@@ -42,7 +42,7 @@ class AdminController extends Controller
     }
 
 
-    function updatePost(NewPostRequest $request, $id){
+    function updatePost(NewPostRequest $request , $id){
       $validateData = $request->validated();
 
       $post = Post::findOrFail($id);
@@ -51,11 +51,8 @@ class AdminController extends Controller
       $categoriesId = $validateData['categories'];
       $categories = Category::find($categoriesId);
 
-      $authorId = $validateData['author_id'];
-      $author = Author::find($authorId);
+      $post->categories()->sync($categories);
 
-      $post -> categories()->sync($categories);
-      $post -> author()->associate($author);
       return redirect('/');
 
     }

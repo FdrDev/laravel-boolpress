@@ -10667,10 +10667,19 @@ header {
   top: 0;
   height: 50px;
   background: rgba(60, 0, 255, 0.3);
-  color: white;
   display: flex;
-  justify-content: space-between;
+}
+
+header .header-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
   align-items: center;
+}
+
+header .header-container ul {
+  display: flex;
+  list-style-type: none;
 }
 
 .container {
@@ -10683,10 +10692,26 @@ header {
   padding: 15px;
 }
 
-.container .search {
+.container .post .edit-link {
+  background: black;
+  color: white;
+  border-radius: 15%;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.container .home-container {
+  display: flex;
+}
+
+.container .home-container .post-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.container .home-container .search {
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
   text-align: right;
   margin: 15px 0;

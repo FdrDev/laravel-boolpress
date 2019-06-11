@@ -9,6 +9,5 @@ $factory->define(App\Post::class, function (Faker $faker) {
     return [
           'title'=>$faker->unique()->word(3),
           'content'=>$faker->text()
-
     ];
 });

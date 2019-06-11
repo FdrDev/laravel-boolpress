@@ -12,7 +12,7 @@ class PostSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+     public function run()
     {
       factory(Post::class, 50)->make()->each(function($post) {
 
@@ -22,7 +22,6 @@ class PostSeeder extends Seeder
 
           $categories = Category::inRandomOrder()->take(rand(1, 3))->get();
           $post->categories()->attach($categories);
-
       });
     }
 }
